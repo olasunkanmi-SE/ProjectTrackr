@@ -1,0 +1,19 @@
+{
+  "name": "projecttrackr",
+  "version": "1.0.0",
+  "description": "ProjectTrackr is a comprehensive project management application that helps teams efficiently track, manage, and collaborate on projects and tasks. It provides a user-friendly interface with powerful features to streamline project workflows, enhance team communication, and improve productivity",
+  "main": "index.js",
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "turbo": "^1.10.7"
+  },
+  "workspaces": [
+    "apps/*"
+  ]
+}
