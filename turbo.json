@@ -4,6 +4,12 @@
     "dev": {
       "cache": false
     },
+    "test:cov": {
+      "cache": false
+    },
+    "test": {
+      "cache": false
+    },
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
