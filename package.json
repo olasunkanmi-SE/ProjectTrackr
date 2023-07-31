@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "turbo run dev",
-    "build": "turbo run build"
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "test:cov": "turbo run test:cov",
+    "package": "printf 'Enter the name of the application folder: ' && read folder_name && printf 'Enter the name of the package to install: ' && read package_name && npm install --workspace $folder_name $package_name"
   },
   "keywords": [],
   "author": "",
