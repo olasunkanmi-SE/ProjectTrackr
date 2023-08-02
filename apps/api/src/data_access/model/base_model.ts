@@ -1,28 +1,40 @@
+import { Field, GraphQLISODateTime } from '@nestjs/graphql';
 import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
 @Entity({ name: 'BaseModel' })
 export class BaseModel {
+  @Field()
+  @PrimaryGeneratedColumn('uuid')
+  _id?: string;
+
   @CreateDateColumn()
-  auditCreatedDateTme: Date;
+  @Field(() => GraphQLISODateTime, { nullable: true })
+  auditCreatedDateTime: string;
 
   @Column({ type: 'varchar', length: 50 })
+  @Field(() => GraphQLISODateTime)
   auditCreatedBy: string;
 
   @UpdateDateColumn()
-  auditModifiedDateTime?: Date;
+  @Field(() => GraphQLISODateTime, { nullable: true })
+  auditModifiedDateTime?: string;
 
   @Column({ type: 'varchar', length: 50, nullable: true })
+  @Field(() => GraphQLISODateTime, { nullable: true })
   auditModifiedBy?: string;
 
   @DeleteDateColumn()
-  auditDeletedDateTime?: Date;
+  @Field(() => GraphQLISODateTime, { nullable: true })
+  auditDeletedDateTime?: string;
 
   @Column({ type: 'varchar', length: 50, nullable: true })
+  @Field(() => GraphQLISODateTime, { nullable: true })
   auditDeletedBy?: string;
 }

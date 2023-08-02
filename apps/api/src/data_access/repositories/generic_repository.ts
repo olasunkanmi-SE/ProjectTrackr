@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { FindManyOptions, Repository, FindOneOptions, IsNull } from 'typeorm';
-import { IRepository } from './generic_repository.interface';
+import { IRepository } from './interfaces/generic_repository.interface';
 
 export interface IMapper<TEntity, TModel> {
   toPersistence(entity: TEntity): TModel;
