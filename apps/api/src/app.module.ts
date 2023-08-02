@@ -7,6 +7,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DatabaseModule } from './data_access/database/database.module';
 import * as Joi from 'joi';
+import { AppResolver } from './app.resolver';
 
 @Module({
   imports: [
@@ -25,6 +26,6 @@ import * as Joi from 'joi';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, AppResolver],
 })
 export class AppModule {}

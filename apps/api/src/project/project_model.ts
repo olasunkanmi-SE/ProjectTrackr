@@ -1,13 +1,9 @@
 import { Field } from '@nestjs/graphql';
 import { BaseModel } from 'src/data_access/model/base_model';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity } from 'typeorm';
 
 @Entity({ name: 'Project' })
-export class ProjectModel extends BaseModel {
-  @Field()
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
-
+export class ProjectDataModel extends BaseModel {
   @Field()
   @Column({ type: 'varchar', length: 128 })
   name: string;
@@ -19,4 +15,8 @@ export class ProjectModel extends BaseModel {
   @Field()
   @Column({ type: 'varchar', length: 32 })
   code: string;
+
+  @Field()
+  @Column({ type: 'varchar', length: 32 })
+  category: string;
 }
