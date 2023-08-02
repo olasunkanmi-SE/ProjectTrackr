@@ -10,6 +10,9 @@
     "test": {
       "cache": false
     },
+    "create:migration": {
+      "cache": false
+    },
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]

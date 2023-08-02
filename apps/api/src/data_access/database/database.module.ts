@@ -12,6 +12,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         database: config.getOrThrow('POSTGRES_DB'),
         username: config.getOrThrow('POSTGRES_USER'),
         password: config.getOrThrow('POSTGRES_PASSWORD'),
+        autoLoadEntities: true,
+        synchronize: config.getOrThrow('POSTGRES_SYNCHRONIZE'),
       }),
       inject: [ConfigService],
     }),
