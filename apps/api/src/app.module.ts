@@ -5,7 +5,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { DatabaseModule } from './database/database.module';
+import { DatabaseModule } from './data_access/database/database.module';
 import * as Joi from 'joi';
 
 @Module({
