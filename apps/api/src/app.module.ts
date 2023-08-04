@@ -2,12 +2,12 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
+import * as Joi from 'joi';
 import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DatabaseModule } from './data_access/database/database.module';
-import * as Joi from 'joi';
-import { AppResolver } from './app.resolver';
+import { ProjectModule } from './project/project.module';
 
 @Module({
   imports: [
@@ -24,8 +24,9 @@ import { AppResolver } from './app.resolver';
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
+    ProjectModule,
   ],
   controllers: [AppController],
-  providers: [AppService, AppResolver],
+  providers: [AppService],
 })
 export class AppModule {}

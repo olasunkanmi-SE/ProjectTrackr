@@ -2,6 +2,25 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type ProjectDataModel {
+  _id: String!
+  auditCreatedDateTime: DateTime
+  auditCreatedBy: DateTime!
+  auditModifiedDateTime: DateTime
+  auditModifiedBy: String!
+  auditDeletedDateTime: DateTime
+  auditDeletedBy: String!
+  name: String!
+  description: String!
+  code: String!
+  category: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type Query {
-  hello: String!
+  projects: [ProjectDataModel!]!
 }

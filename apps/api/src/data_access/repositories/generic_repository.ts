@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { FindManyOptions, Repository, FindOneOptions, IsNull } from 'typeorm';
-import { IRepository } from './interfaces/generic_repository.interface';
+import { IGenericRepository } from './interfaces/generic_repository.interface';
 
 export interface IMapper<TEntity, TModel> {
   toPersistence(entity: TEntity): TModel;
@@ -15,7 +15,7 @@ export interface IMapper<TEntity, TModel> {
  */
 @Injectable()
 export class GenericSqlRepository<TEntity, TModel>
-  implements IRepository<TEntity, TModel>
+  implements IGenericRepository<TEntity, TModel>
 {
   constructor(
     protected readonly repository: Repository<TModel>,
