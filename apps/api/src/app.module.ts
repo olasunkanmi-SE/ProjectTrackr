@@ -27,6 +27,6 @@ import { ProjectModule } from './project/project.module';
     ProjectModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, AppResolver],
 })
 export class AppModule {}
