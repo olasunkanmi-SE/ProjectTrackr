@@ -10,7 +10,7 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class ProjectRepository
   extends GenericSqlRepository<Project, ProjectDataModel>
-  implements IProjectRepository<Project, ProjectDataModel>
+  implements IProjectRepository
 {
   constructor(
     @InjectRepository(ProjectDataModel)
@@ -18,5 +18,9 @@ export class ProjectRepository
     projectMapper: ProjectMapper,
   ) {
     super(repository, projectMapper);
+  }
+
+  async findProjects(): Promise<Project[]> {
+    return await this.find({});
   }
 }
