@@ -1,5 +1,5 @@
 import { Entity } from 'src/domain/entity';
-import { IProject } from './project.interface';
+import { IProject } from './interfaces/project.interface';
 import { Result } from 'src/domain/result';
 import { Audit } from 'src/audit/audit';
 

@@ -14,7 +14,7 @@ const dataSource: DataSource = new DataSource({
   username: configService.getOrThrow('POSTGRES_USER'),
   password: configService.getOrThrow('POSTGRES_PASSWORD'),
   logging: ['query', 'error'],
-  migrations: [__dirname + '/src/migrations/*{.ts,.js}'],
+  migrations: [__dirname + '/migrations/*{.ts,.js}'],
   entities: [ProjectDataModel],
 });
 
