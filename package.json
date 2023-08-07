@@ -9,7 +9,10 @@
     "test": "turbo run test",
     "test:cov": "turbo run test:cov",
     "package": "printf 'Enter the name of the application folder: ' && read folder_name && printf 'Enter the name of the package to install: ' && read package_name && npm install --workspace $folder_name $package_name",
-    "create:migration": "turbo run create:migration"
+    "create:migration": "turbo run create:migration",
+    "generate:migration": "turbo run generate:migration",
+    "run:migration": "turbo run run:migration",
+    "revert:migration": "turbo run revert:migration"
   },
   "keywords": [],
   "author": "",
