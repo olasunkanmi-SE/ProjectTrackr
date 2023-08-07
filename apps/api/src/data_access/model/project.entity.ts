@@ -20,8 +20,4 @@ export class ProjectDataModel extends BaseModel {
   @Field()
   @Column({ type: 'varchar', length: 32 })
   category: string;
-
-  @Field()
-  @Column({ type: 'varchar', length: 32, nullable: true })
-  types?: string;
 }
