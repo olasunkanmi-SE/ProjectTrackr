@@ -1,8 +1,8 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { BaseModel } from 'src/data_access/model/base_model';
+import { BaseModel } from 'src/data_access/model/base.entity';
 import { Column, Entity } from 'typeorm';
 
-@Entity({ name: 'Project' })
+@Entity({ name: 'projects' })
 @ObjectType()
 export class ProjectDataModel extends BaseModel {
   @Field()

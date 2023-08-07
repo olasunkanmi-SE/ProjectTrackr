@@ -13,6 +13,15 @@
     "create:migration": {
       "cache": false
     },
+    "generate:migration": {
+      "cache": false
+    },
+    "run:migration": {
+      "cache": false
+    },
+    "revert:migration": {
+      "cache": false
+    },
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]

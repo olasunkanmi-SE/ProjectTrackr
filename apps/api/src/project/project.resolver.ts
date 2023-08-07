@@ -2,7 +2,7 @@ import { Inject } from '@nestjs/common';
 import { TYPES } from 'src/application/constants';
 import { IProjectService } from './interfaces/project_service.interface';
 import { Query, Resolver } from '@nestjs/graphql';
-import { ProjectDataModel } from './project_model';
+import { ProjectDataModel } from '../data_access/model/project.entity';
 import { Project } from './project';
 
 @Resolver((of) => ProjectDataModel)
