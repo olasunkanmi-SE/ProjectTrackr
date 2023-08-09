@@ -24,3 +24,14 @@ scalar DateTime
 type Query {
   projects: [ProjectDataModel!]!
 }
+
+type Mutation {
+  createProject(createProjectInput: CreateProjectInput!): ProjectDataModel!
+}
+
+input CreateProjectInput {
+  name: String!
+  description: String!
+  code: String!
+  category: String!
+}

@@ -1,4 +1,7 @@
 import { Project } from 'src/project/project';
-export interface IProjectRepository {
+import { IGenericRepository } from './generic_repository.interface';
+import { ProjectDataModel } from 'src/data_access/model/project.entity';
+export interface IProjectRepository
+  extends IGenericRepository<Project, ProjectDataModel> {
   findProjects(): Promise<Project[]>;
 }
