@@ -1,4 +1,4 @@
-import { Audit } from 'src/audit/audit';
+import { Audit } from './../../audit/audit';
 
 export interface IProject {
   name: string;
