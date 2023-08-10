@@ -1,4 +1,4 @@
-import { IssueStatus, IssuePriority } from './../../application/constants';
+import { IssueStatus, IssuePriority } from '../../../application/constants';
 import { Field, ObjectType } from '@nestjs/graphql';
 import { Column, Entity, ManyToOne } from 'typeorm';
 import { BaseModel } from './base.entity';
