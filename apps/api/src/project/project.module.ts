@@ -9,7 +9,6 @@ import { ProjectResolver } from './project.resolver';
 import { IssueDataModel } from 'src/data_access/model/issue.entity';
 @Module({
   imports: [TypeOrmModule.forFeature([ProjectDataModel, IssueDataModel])],
-  controllers: [],
   providers: [
     { provide: TYPES.projectService, useClass: ProjectService },
     { provide: TYPES.projectRepository, useClass: ProjectRepository },

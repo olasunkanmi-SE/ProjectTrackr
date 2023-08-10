@@ -45,5 +45,5 @@ export class IssueDataModel extends BaseModel {
 
   @ManyToOne(() => ProjectDataModel, (project) => project.issues)
   @Field(() => ProjectDataModel)
-  project: ProjectDataModel;
+  project?: ProjectDataModel;
 }
