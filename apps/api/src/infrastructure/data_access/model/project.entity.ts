@@ -1,6 +1,6 @@
-import { IProject } from './../../project/interfaces/project.interface';
+import { IProject } from '../../../project/interfaces/project.interface';
 import { Field, ObjectType } from '@nestjs/graphql';
-import { BaseModel } from 'src/data_access/model/base.entity';
+import { BaseModel } from 'src/infrastructure/data_access/model/base.entity';
 import { Column, Entity, OneToMany } from 'typeorm';
 import { IssueDataModel } from './issue.entity';
 

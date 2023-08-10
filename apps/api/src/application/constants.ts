@@ -3,6 +3,7 @@ export const TYPES = {
   projectService: 'projectService',
   issueRepository: 'issueRepository',
   issueService: 'issueService',
+  applicationLogger: 'applicationLogger',
 };
 
 export enum IssueStatus {
@@ -18,3 +19,7 @@ export enum IssuePriority {
   MEDIUM = 'medium',
   LOW = 'low',
 }
+
+export const APIResponseMessage = {
+  serverError: 'Critical server error occured, please try again later',
+};

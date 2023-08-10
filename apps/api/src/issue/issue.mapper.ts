@@ -1,7 +1,7 @@
-import { IMapper } from './../data_access/repositories/generic_repository';
+import { IMapper } from '../infrastructure/data_access/repositories/generic_repository';
 import { Injectable } from '@nestjs/common';
 import { Issue } from './issue';
-import { IssueDataModel } from 'src/data_access/model/issue.entity';
+import { IssueDataModel } from 'src/infrastructure/data_access/model/issue.entity';
 import { ProjectMapper } from 'src/project/project.mapper';
 import { AuditMapper } from 'src/audit/audit.mapper';
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { IMapper } from 'src/data_access/repositories/generic_repository';
+import { IMapper } from 'src/infrastructure/data_access/repositories/generic_repository';
 import { Audit } from './audit';
-import { BaseModel } from 'src/data_access/model/base.entity';
+import { BaseModel } from 'src/infrastructure/data_access/model/base.entity';
 @Injectable()
 export class AuditMapper implements IMapper<Audit, BaseModel> {
   toPersistence(entity: Audit): BaseModel {

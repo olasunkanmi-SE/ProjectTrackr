@@ -1,4 +1,4 @@
-import { IssueDataModel } from 'src/data_access/model/issue.entity';
+import { IssueDataModel } from 'src/infrastructure/data_access/model/issue.entity';
 import { Issue } from 'src/issue/issue';
 import { IGenericRepository } from './generic_repository.interface';
 
