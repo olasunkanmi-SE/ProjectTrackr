@@ -42,6 +42,7 @@ type ProjectDataModel {
 
 type Query {
   projects: [ProjectDataModel!]!
+  issues: [IssueDataModel!]!
 }
 
 type Mutation {

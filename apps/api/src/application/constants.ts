@@ -1,6 +1,8 @@
 export const TYPES = {
   projectRepository: 'projectRepository',
   projectService: 'projectService',
+  issueRepository: 'issueRepository',
+  issueService: 'issueService',
 };
 
 export enum IssueStatus {
