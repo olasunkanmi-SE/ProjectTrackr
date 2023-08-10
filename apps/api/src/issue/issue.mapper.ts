@@ -16,7 +16,6 @@ export class IssueMapper implements IMapper<Issue, IssueDataModel> {
       assignee,
       reporter,
       projectId,
-      project,
       audit,
     } = entity;
 
