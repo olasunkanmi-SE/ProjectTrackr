@@ -6,8 +6,9 @@ import { ProjectDataModel } from '../data_access/model/project.entity';
 import { ProjectMapper } from './project.mapper';
 import { ProjectService } from './project_service';
 import { ProjectResolver } from './project.resolver';
+import { IssueDataModel } from 'src/data_access/model/issue.entity';
 @Module({
-  imports: [TypeOrmModule.forFeature([ProjectDataModel])],
+  imports: [TypeOrmModule.forFeature([ProjectDataModel, IssueDataModel])],
   controllers: [],
   providers: [
     { provide: TYPES.projectService, useClass: ProjectService },

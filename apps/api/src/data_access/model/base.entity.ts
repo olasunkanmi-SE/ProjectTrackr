@@ -16,7 +16,7 @@ export class BaseModel {
   _id?: string;
 
   @CreateDateColumn()
-  @Field(() => GraphQLISODateTime, { nullable: true })
+  @Field(() => GraphQLISODateTime)
   auditCreatedDateTime: string;
 
   @Column({ type: 'varchar', length: 50 })
@@ -28,7 +28,7 @@ export class BaseModel {
   auditModifiedDateTime?: string;
 
   @Column({ type: 'varchar', length: 50, nullable: true })
-  @Field()
+  @Field({ nullable: true })
   auditModifiedBy?: string;
 
   @DeleteDateColumn()
@@ -36,6 +36,6 @@ export class BaseModel {
   auditDeletedDateTime?: string;
 
   @Column({ type: 'varchar', length: 50, nullable: true })
-  @Field()
+  @Field({ nullable: true })
   auditDeletedBy?: string;
 }
