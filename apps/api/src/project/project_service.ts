@@ -1,6 +1,6 @@
 import { Inject } from '@nestjs/common';
 import { TYPES } from 'src/application/constants';
-import { IProjectRepository } from 'src/data_access/repositories/interfaces/project_repository.interface';
+import { IProjectRepository } from 'src/infrastructure/data_access/repositories/interfaces/project_repository.interface';
 import { Project } from './project';
 import { Audit } from 'src/audit/audit';
 import { IProjectService } from './interfaces/project_service.interface';

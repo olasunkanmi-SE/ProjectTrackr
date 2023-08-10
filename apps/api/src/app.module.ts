@@ -6,9 +6,13 @@ import * as Joi from 'joi';
 import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { DatabaseModule } from './data_access/database/database.module';
+import { DatabaseModule } from './infrastructure/data_access/database/database.module';
 import { ProjectModule } from './project/project.module';
 import { IssueModule } from './issue/issue.module';
+import { APP_FILTER } from '@nestjs/core';
+import { ApplicationExceptionsFilter } from './infrastructure/filters';
+import { TYPES } from './application/constants';
+import { ApplicationLogger } from './infrastructure/logger';
 
 @Module({
   imports: [
@@ -29,6 +33,10 @@ import { IssueModule } from './issue/issue.module';
     IssueModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    { provide: APP_FILTER, useClass: ApplicationExceptionsFilter },
+    { provide: TYPES.applicationLogger, useClass: ApplicationLogger },
+  ],
 })
 export class AppModule {}

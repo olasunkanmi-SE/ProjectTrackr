@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Issue } from 'src/issue/issue';
 import { Repository } from 'typeorm';
 import { IssueDataModel } from '../model/issue.entity';
-import { IssueMapper } from './../../issue/issue.mapper';
+import { IssueMapper } from '../../../issue/issue.mapper';
 import { GenericSqlRepository } from './generic_repository';
 import { IIssueRepository } from './interfaces/issue_repository.interface';
 

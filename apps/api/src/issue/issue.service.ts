@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { IIssueRepository } from './../data_access/repositories/interfaces/issue_repository.interface';
+import { IIssueRepository } from '../infrastructure/data_access/repositories/interfaces/issue_repository.interface';
 import { IIssueService } from './interfaces/issue.service.interface';
 import { Issue } from './issue';
 import { TYPES } from 'src/application/constants';
