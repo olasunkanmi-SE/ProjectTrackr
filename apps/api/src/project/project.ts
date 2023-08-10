@@ -1,7 +1,7 @@
-import { Entity } from 'src/domain/entity';
+import { Result } from './../domain/result';
+import { Audit } from './../audit/audit';
+import { Entity } from './../domain/entity';
 import { IProject } from './interfaces/project.interface';
-import { Result } from 'src/domain/result';
-import { Audit } from 'src/audit/audit';
 
 export class Project extends Entity implements IProject {
   _name: string;
