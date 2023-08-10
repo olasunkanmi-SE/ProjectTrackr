@@ -8,6 +8,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DatabaseModule } from './data_access/database/database.module';
 import { ProjectModule } from './project/project.module';
+import { IssueModule } from './issue/issue.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { ProjectModule } from './project/project.module';
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
     ProjectModule,
+    IssueModule,
   ],
   controllers: [AppController],
   providers: [AppService],

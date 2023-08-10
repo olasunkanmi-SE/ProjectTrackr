@@ -1,11 +1,11 @@
-import { ProjectMapper } from './../../project/project.mapper';
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { ProjectDataModel } from 'src/data_access/model/project.entity';
 import { Project } from 'src/project/project';
+import { Repository } from 'typeorm';
+import { ProjectMapper } from './../../project/project.mapper';
 import { GenericSqlRepository } from './generic_repository';
 import { IProjectRepository } from './interfaces/project_repository.interface';
-import { ProjectDataModel } from 'src/data_access/model/project.entity';
-import { Repository } from 'typeorm';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class ProjectRepository
