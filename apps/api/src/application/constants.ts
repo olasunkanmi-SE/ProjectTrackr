@@ -22,4 +22,11 @@ export enum IssuePriority {
 
 export const APIResponseMessage = {
   serverError: 'Critical server error occured, please try again later',
+  projectNotFound: 'Project does not exist',
+};
+
+export const DbLiterals = {
+  project: 'project',
+  projectIssues: 'issues.project',
+  issues: 'issues',
 };
