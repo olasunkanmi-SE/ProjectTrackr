@@ -8,7 +8,7 @@ export class Comment extends Entity implements IComment {
   _content: string;
   _issueId: string;
   _issue: Issue;
-  _user: string;
+  _user: string | undefined;
   _audit: Audit;
 
   constructor(id: string, props: IComment) {
@@ -44,11 +44,11 @@ export class Comment extends Entity implements IComment {
     this._issue = issue;
   }
 
-  get user(): string {
+  get user(): string | undefined {
     return this._user;
   }
 
-  set user(user: string) {
+  set user(user: string | undefined) {
     this._user = user;
   }
 
