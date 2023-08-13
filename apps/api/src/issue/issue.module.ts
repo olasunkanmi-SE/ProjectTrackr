@@ -10,6 +10,7 @@ import { ProjectRepository } from 'src/infrastructure/data_access/repositories/p
 import { ProjectDataModel } from 'src/infrastructure/data_access/model/project.entity';
 import { ProjectMapper } from 'src/project/project.mapper';
 import { AuditMapper } from 'src/audit/audit.mapper';
+import { CommentMapper } from 'src/comment/comment.mapper';
 
 @Module({
   imports: [TypeOrmModule.forFeature([IssueDataModel, ProjectDataModel])],
@@ -21,6 +22,7 @@ import { AuditMapper } from 'src/audit/audit.mapper';
     IssueMapper,
     IssueResolver,
     ProjectMapper,
+    CommentMapper,
   ],
 })
 export class IssueModule {}

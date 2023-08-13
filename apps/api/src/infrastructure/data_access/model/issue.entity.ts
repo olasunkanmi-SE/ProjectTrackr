@@ -1,8 +1,9 @@
 import { IssueStatus, IssuePriority } from '../../../application/constants';
 import { Field, ObjectType } from '@nestjs/graphql';
-import { Column, Entity, ManyToOne } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
 import { BaseModel } from './base.entity';
 import { ProjectDataModel } from './project.entity';
+import { CommentDataModel } from './comment.entity';
 
 @Entity({ name: 'issues' })
 @ObjectType()
@@ -46,4 +47,8 @@ export class IssueDataModel extends BaseModel {
   @ManyToOne(() => ProjectDataModel, (project) => project.issues)
   @Field(() => ProjectDataModel)
   project: ProjectDataModel;
+
+  @OneToMany(() => CommentDataModel, (comment) => comment.issue)
+  @Field(() => [CommentDataModel], { nullable: true, defaultValue: [] })
+  comments?: CommentDataModel[];
 }
