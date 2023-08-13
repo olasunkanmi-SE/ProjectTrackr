@@ -2,6 +2,24 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type CommentDataModel {
+  _id: String!
+  auditCreatedDateTime: DateTime!
+  auditCreatedBy: DateTime!
+  auditModifiedDateTime: DateTime
+  auditModifiedBy: String
+  auditDeletedDateTime: DateTime
+  auditDeletedBy: String
+  content: String!
+  issueId: String!
+  issue: IssueDataModel!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type IssueDataModel {
   _id: String!
   auditCreatedDateTime: DateTime!
@@ -18,12 +36,8 @@ type IssueDataModel {
   reporter: String
   projectId: String!
   project: ProjectDataModel!
+  comments: [CommentDataModel!]
 }
-
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
 
 type ProjectDataModel {
   _id: String!

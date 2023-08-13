@@ -13,6 +13,7 @@ import { APP_FILTER } from '@nestjs/core';
 import { ApplicationExceptionsFilter } from './infrastructure/filters';
 import { TYPES } from './application/constants';
 import { ApplicationLogger } from './infrastructure/logger';
+import { CommentModule } from './comment/comment.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { ApplicationLogger } from './infrastructure/logger';
     }),
     ProjectModule,
     IssueModule,
+    CommentModule,
   ],
   controllers: [AppController],
   providers: [

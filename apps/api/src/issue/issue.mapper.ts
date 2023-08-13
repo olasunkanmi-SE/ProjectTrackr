@@ -4,12 +4,14 @@ import { Issue } from './issue';
 import { IssueDataModel } from 'src/infrastructure/data_access/model/issue.entity';
 import { ProjectMapper } from 'src/project/project.mapper';
 import { AuditMapper } from 'src/audit/audit.mapper';
+import { CommentMapper } from 'src/comment/comment.mapper';
 
 @Injectable()
 export class IssueMapper implements IMapper<Issue, IssueDataModel> {
   constructor(
     private readonly projectMapper: ProjectMapper,
     private readonly auditMapper: AuditMapper,
+    private readonly commentMapper: CommentMapper,
   ) {}
   toPersistence(entity: Issue): IssueDataModel {
     const {
@@ -63,6 +65,7 @@ export class IssueMapper implements IMapper<Issue, IssueDataModel> {
       reporter,
       projectId,
       project,
+      comments,
       _id,
     } = model;
     return Issue.create(
@@ -75,6 +78,9 @@ export class IssueMapper implements IMapper<Issue, IssueDataModel> {
         reporter,
         projectId,
         project: this.projectMapper.toDomain(project),
+        comments: comments.length
+          ? comments.map((comment) => this.commentMapper.toDomain(comment))
+          : [],
         audit: this.auditMapper.toDomain(model),
       },
       _id,

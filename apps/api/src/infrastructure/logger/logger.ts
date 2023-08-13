@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { IContextAwareLogger, ILoggerTimeStamp } from './context-aware.logger';
+import { IContextAwareLogger } from './context-aware.logger';
 
 @Injectable()
 export class ApplicationLogger extends Logger implements IContextAwareLogger {

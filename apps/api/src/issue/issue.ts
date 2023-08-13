@@ -3,6 +3,7 @@ import { Audit } from './../audit/audit';
 import { Entity } from './../domain/entity';
 import { Project } from './../project/project';
 import { IIssue } from './interfaces/issue.interface';
+import { Comment } from 'src/comment/comment';
 
 export class Issue extends Entity implements IIssue {
   _title: string;
@@ -14,6 +15,7 @@ export class Issue extends Entity implements IIssue {
   _projectId: string;
   _project: Project;
   _audit: Audit;
+  _comments: Comment[] | undefined;
 
   constructor(id: string, props: IIssue) {
     super(id);
@@ -26,6 +28,7 @@ export class Issue extends Entity implements IIssue {
     this._projectId = props.projectId;
     this._project = props.project;
     this._audit = props.audit;
+    this._comments = props.comments;
   }
 
   get title(): string {
@@ -98,6 +101,14 @@ export class Issue extends Entity implements IIssue {
 
   set audit(audit: Audit) {
     this._audit = audit;
+  }
+
+  get comments(): Comment[] | undefined {
+    return this._comments;
+  }
+
+  set comments(comment: Comment[] | undefined) {
+    this._comments = comment;
   }
 
   static create(props: IIssue, id?: string): Result<Issue> {
