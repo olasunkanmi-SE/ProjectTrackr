@@ -9,6 +9,6 @@ export interface IIssue {
   assignee?: string;
   reporter?: string;
   projectId: string;
-  project?: Project;
+  project: Project;
   audit: Audit;
 }

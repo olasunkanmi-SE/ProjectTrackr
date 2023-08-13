@@ -2,13 +2,14 @@ export interface IExceptionResponse {
   isSuccess: boolean;
   statusCode: number;
   timeStamp: string;
-  path: string;
+  path: string | number;
   message: string;
   method: string;
-  body?: any;
+  entity: any;
 }
 
-export interface IRequestException {
+export interface IGetException {
   statusCode: number;
-  message: string;
+  message: any;
+  timeStamp: string;
 }

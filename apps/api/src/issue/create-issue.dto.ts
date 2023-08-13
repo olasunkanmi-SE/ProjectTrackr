@@ -1,5 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsString, IsUUID } from 'class-validator';
 
 @InputType()
 export class CreateIssueInput {
@@ -23,7 +23,7 @@ export class CreateIssueInput {
   @Field()
   priority: string;
 
-  @IsString()
+  @IsUUID()
   @IsNotEmpty()
   @Field()
   projectId: string;

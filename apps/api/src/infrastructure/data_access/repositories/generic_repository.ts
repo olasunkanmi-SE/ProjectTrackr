@@ -81,10 +81,7 @@ export class GenericSqlRepository<TEntity, TModel>
     return items.map((r) => this.mapper.toDomain(r));
   }
 
-  async save(entity: TEntity): Promise<TEntity> {
-    const item = await this.repository.save(
-      this.mapper.toPersistence(entity) as any,
-    );
-    return this.mapper.toDomain(item);
+  async save(entity: TEntity): Promise<TModel> {
+    return await this.repository.save(this.mapper.toPersistence(entity));
   }
 }
