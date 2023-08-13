@@ -7,6 +7,10 @@ import { AuditMapper } from 'src/audit/audit.mapper';
 
 @Injectable()
 export class IssueMapper implements IMapper<Issue, IssueDataModel> {
+  constructor(
+    private readonly projectMapper: ProjectMapper,
+    private readonly auditMapper: AuditMapper,
+  ) {}
   toPersistence(entity: Issue): IssueDataModel {
     const {
       title,
@@ -16,6 +20,7 @@ export class IssueMapper implements IMapper<Issue, IssueDataModel> {
       assignee,
       reporter,
       projectId,
+      project,
       audit,
     } = entity;
 
@@ -37,6 +42,7 @@ export class IssueMapper implements IMapper<Issue, IssueDataModel> {
       assignee,
       reporter,
       projectId,
+      project: this.projectMapper.toPersistence(project),
       auditCreatedBy,
       auditCreatedDateTime,
       auditDeletedBy,
@@ -68,8 +74,8 @@ export class IssueMapper implements IMapper<Issue, IssueDataModel> {
         assignee,
         reporter,
         projectId,
-        project: new ProjectMapper().toDomain(project),
-        audit: new AuditMapper().toDomain(model),
+        project: this.projectMapper.toDomain(project),
+        audit: this.auditMapper.toDomain(model),
       },
       _id,
     ).getValue();

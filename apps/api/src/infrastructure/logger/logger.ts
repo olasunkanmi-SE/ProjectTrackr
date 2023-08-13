@@ -3,10 +3,6 @@ import { IContextAwareLogger, ILoggerTimeStamp } from './context-aware.logger';
 
 @Injectable()
 export class ApplicationLogger extends Logger implements IContextAwareLogger {
-  constructor(context: string, options?: ILoggerTimeStamp) {
-    super(context, options);
-  }
-
   debug(context: string, message: string): void {
     if (process.env['NODE_ENV'] !== 'production')
       super.debug(`[DEBUG] ${message}`, context);

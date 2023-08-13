@@ -23,6 +23,6 @@ export class ProjectResolver {
     @Args('createProjectInput')
     createProjectInput: CreateProjectInput,
   ): Promise<Project> {
-    return this.projectService.createProject(createProjectInput);
+    return await this.projectService.createProject(createProjectInput);
   }
 }

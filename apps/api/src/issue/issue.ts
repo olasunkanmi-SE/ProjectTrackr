@@ -12,7 +12,7 @@ export class Issue extends Entity implements IIssue {
   _assignee?: string;
   _reporter?: string;
   _projectId: string;
-  _project?: Project;
+  _project: Project;
   _audit: Audit;
 
   constructor(id: string, props: IIssue) {
@@ -25,6 +25,7 @@ export class Issue extends Entity implements IIssue {
     this._reporter = props.reporter;
     this._projectId = props.projectId;
     this._project = props.project;
+    this._audit = props.audit;
   }
 
   get title(): string {
@@ -83,7 +84,7 @@ export class Issue extends Entity implements IIssue {
     this._projectId = projectId;
   }
 
-  get project(): Project | undefined {
+  get project(): Project {
     return this._project;
   }
 

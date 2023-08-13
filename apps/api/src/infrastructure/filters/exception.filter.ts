@@ -1,64 +1,31 @@
 import {
   ArgumentsHost,
   Catch,
-  ExceptionFilter,
   HttpException,
   HttpStatus,
   Inject,
 } from '@nestjs/common';
-import { Request } from 'express';
+import { GqlArgumentsHost, GqlExceptionFilter } from '@nestjs/graphql';
 import * as fs from 'fs';
 import { APIResponseMessage, TYPES } from '../../application/constants';
 import { IContextAwareLogger } from '../logger';
-import {
-  IExceptionResponse,
-  IRequestException,
-} from './exception-response.interface';
+import { IGetException } from './exception-response.interface';
+import { GraphQLResolveInfo } from 'graphql';
 
-@Catch()
-export class ApplicationExceptionsFilter implements ExceptionFilter {
+@Catch(HttpException)
+export class ApplicationExceptionsFilter implements GqlExceptionFilter {
   constructor(
     @Inject(TYPES.applicationLogger)
     private readonly logger: IContextAwareLogger,
   ) {}
-  catch(exception: any, host: ArgumentsHost) {
-    const context = host.switchToHttp();
-    const response = context.getResponse();
-    const request = context.getRequest();
-    const { body } = request;
-    let props: any;
-    if (Object.hasOwnProperty.call(body, 'password')) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { password, ...prop } = body;
-      props = prop;
-    }
-    const { statusCode, message } = this.getException(exception);
-    const responseBody: IExceptionResponse = {
-      isSuccess: false,
-      statusCode,
-      message,
-      path: request.originalUrl,
-      timeStamp: new Date().toISOString(),
-      method: request.method,
-      body: Object.hasOwnProperty.call(body, 'password') ? props : body,
-    };
-    this.logErrorMessage(
-      request,
-      JSON.stringify(responseBody),
-      statusCode,
-      exception,
-    );
-    const errorLog: string = this.constructErrorMessage(
-      responseBody,
-      request,
-      exception,
-    );
-    this.writeErrorLogToFile(errorLog);
-    response.status(statusCode).json(responseBody);
-    return exception;
+  catch(exception: HttpException, host: ArgumentsHost) {
+    const gqlHost = GqlArgumentsHost.create(host);
+    const info = gqlHost.getInfo<GraphQLResolveInfo>();
+    const errorResponse = this.getException(exception);
+    this.logErrorMessage(info, errorResponse);
   }
 
-  private getException(exception: any): IRequestException {
+  private getException(exception: any): IGetException {
     let statusCode: number;
     let message: any;
     if (exception instanceof HttpException) {
@@ -69,42 +36,29 @@ export class ApplicationExceptionsFilter implements ExceptionFilter {
       statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
       message = APIResponseMessage.serverError;
     }
-    return { statusCode, message };
+    return { statusCode, message, timeStamp: new Date().toLocaleDateString() };
   }
 
-  private logErrorMessage(
-    request: any,
-    message: string,
-    statusCode: number,
-    exception: any,
-  ) {
-    if (
-      statusCode === HttpStatus.INTERNAL_SERVER_ERROR ||
-      HttpStatus.NOT_FOUND
-    ) {
+  private logErrorMessage(info: any, error: IGetException) {
+    const errorObj = {
+      ...error,
+      type: info.parentType,
+      field: info.fieldName,
+    };
+
+    if (errorObj.statusCode === HttpStatus.INTERNAL_SERVER_ERROR) {
       this.logger.error(
-        `End Request for ${request.path}`,
-        `method=${request.method} statusCode=${statusCode} message=${message}`,
-        exception.stack ?? '',
+        `${info.parentType} ${info.fieldName}`,
+        JSON.stringify(errorObj),
+        'ExceptionFilter',
+      );
+    } else {
+      this.logger.warn(
+        `${info.parentType} ${info.fieldName}`,
+        JSON.stringify(errorObj),
       );
     }
-    this.logger.warn(
-      `End Request for ${request.path}`,
-      `method=${request.method} statusCode=${statusCode} message=${message}`,
-    );
-  }
-
-  private constructErrorMessage(
-    errorResponse: IExceptionResponse,
-    request: Request,
-    exception: unknown,
-  ): string {
-    const { statusCode } = errorResponse;
-    const { url, method } = request;
-    const errorLog = `Response Code: ${statusCode} - Method: ${method} - URL: ${url}\n\n
-    ${JSON.stringify(errorResponse)}
-    ${exception instanceof HttpException ? exception.stack : exception}`;
-    return errorLog;
+    this.writeErrorLogToFile(JSON.stringify(errorObj));
   }
 
   private writeErrorLogToFile(errorLog: string): void {

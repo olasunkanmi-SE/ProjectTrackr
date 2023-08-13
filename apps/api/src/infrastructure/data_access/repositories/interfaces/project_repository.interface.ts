@@ -4,4 +4,5 @@ import { ProjectDataModel } from 'src/infrastructure/data_access/model/project.e
 export interface IProjectRepository
   extends IGenericRepository<Project, ProjectDataModel> {
   findProjects(): Promise<Project[]>;
+  findProject(id: string): Promise<Project>;
 }

@@ -47,6 +47,7 @@ type Query {
 
 type Mutation {
   createProject(createProjectInput: CreateProjectInput!): ProjectDataModel!
+  createIssue(createIssueInput: CreateIssueInput!): IssueDataModel!
 }
 
 input CreateProjectInput {
@@ -54,4 +55,12 @@ input CreateProjectInput {
   description: String!
   code: String!
   category: String!
+}
+
+input CreateIssueInput {
+  title: String!
+  description: String!
+  status: String!
+  priority: String!
+  projectId: String!
 }

@@ -23,4 +23,8 @@ export class ProjectRepository
   async findProjects(): Promise<Project[]> {
     return await this.find({});
   }
+
+  async findProject(id: string): Promise<Project> {
+    return await this.findOne({ where: { _id: id } });
+  }
 }
