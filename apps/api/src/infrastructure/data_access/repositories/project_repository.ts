@@ -12,19 +12,21 @@ export class ProjectRepository
   extends GenericSqlRepository<Project, ProjectDataModel>
   implements IProjectRepository
 {
+  projectMapper: ProjectMapper;
   constructor(
     @InjectRepository(ProjectDataModel)
     repository: Repository<ProjectDataModel>,
     projectMapper: ProjectMapper,
   ) {
     super(repository, projectMapper);
+    this.projectMapper = projectMapper;
   }
 
-  async findProjects(): Promise<Project[]> {
+  async getProjects(): Promise<Project[]> {
     return await this.find({});
   }
 
-  async findProject(id: string): Promise<Project> {
+  async getProjectById(id: string): Promise<Project> {
     return await this.findOne({ where: { _id: id } });
   }
 }

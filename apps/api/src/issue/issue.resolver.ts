@@ -4,7 +4,7 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { TYPES } from 'src/application/constants';
 import { IssueDataModel } from '../infrastructure/data_access/model/issue.entity';
 import { Issue } from './issue';
-import { CreateIssueInput } from './create-issue.dto';
+import { CreateIssueInput } from './validation/create-issue.dto';
 
 @Resolver(() => IssueDataModel)
 export class IssueResolver {

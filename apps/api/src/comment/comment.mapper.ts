@@ -1,8 +1,8 @@
 import { CommentDataModel } from 'src/infrastructure/data_access/model/comment.entity';
 import { IMapper } from 'src/infrastructure/data_access/repositories/generic_repository';
+import { AuditMapper } from '../audit/audit.mapper';
+import { IssueMapper } from '../issue/issue.mapper';
 import { Comment } from './comment';
-import { IssueMapper } from 'src/issue/issue.mapper';
-import { AuditMapper } from 'src/audit/audit.mapper';
 
 export class CommentMapper implements IMapper<Comment, CommentDataModel> {
   constructor(

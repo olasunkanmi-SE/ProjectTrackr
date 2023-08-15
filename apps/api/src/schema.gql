@@ -57,11 +57,13 @@ type ProjectDataModel {
 type Query {
   projects: [ProjectDataModel!]!
   issues: [IssueDataModel!]!
+  comments: [CommentDataModel!]!
 }
 
 type Mutation {
   createProject(createProjectInput: CreateProjectInput!): ProjectDataModel!
   createIssue(createIssueInput: CreateIssueInput!): IssueDataModel!
+  createComment(createCommentInput: CreateCommentInput!): CommentDataModel!
 }
 
 input CreateProjectInput {
@@ -77,4 +79,9 @@ input CreateIssueInput {
   status: String!
   priority: String!
   projectId: String!
+}
+
+input CreateCommentInput {
+  content: String!
+  issueId: String!
 }

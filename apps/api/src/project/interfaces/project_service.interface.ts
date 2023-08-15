@@ -1,4 +1,4 @@
-import { CreateProjectInput } from '../create-project.dto';
+import { CreateProjectInput } from '../validation/create-project.dto';
 import { Project } from '../project';
 
 export interface IProjectService {

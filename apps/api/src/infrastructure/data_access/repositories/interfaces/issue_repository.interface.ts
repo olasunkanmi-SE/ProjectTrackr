@@ -5,4 +5,5 @@ import { IGenericRepository } from './generic_repository.interface';
 export interface IIssueRepository
   extends IGenericRepository<Issue, IssueDataModel> {
   getIssues(): Promise<Issue[]>;
+  getIssueById(id: string): Promise<Issue>;
 }

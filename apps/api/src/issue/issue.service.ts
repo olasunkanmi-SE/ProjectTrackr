@@ -5,7 +5,7 @@ import { IProjectRepository } from 'src/infrastructure/data_access/repositories/
 import { throwApplicationError } from 'src/utils/exception-instance';
 import { IIssueRepository } from '../infrastructure/data_access/repositories/interfaces/issue_repository.interface';
 import { Audit } from './../audit/audit';
-import { CreateIssueInput } from './create-issue.dto';
+import { CreateIssueInput } from './validation/create-issue.dto';
 import { IIssueService } from './interfaces/issue.service.interface';
 import { Issue } from './issue';
 
@@ -26,7 +26,7 @@ export class IssueService implements IIssueService {
   async createIssue(request: CreateIssueInput) {
     let issue: Issue | undefined;
     const { projectId, title, description, status, priority } = request;
-    const project = await this.projectRepository.findProject(projectId);
+    const project = await this.projectRepository.getProjectById(projectId);
     if (!project) {
       throwApplicationError(
         HttpStatus.NOT_FOUND,

@@ -4,7 +4,7 @@ import { IProjectService } from './interfaces/project_service.interface';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { ProjectDataModel } from '../infrastructure/data_access/model/project.entity';
 import { Project } from './project';
-import { CreateProjectInput } from './create-project.dto';
+import { CreateProjectInput } from './validation/create-project.dto';
 
 @Resolver(() => ProjectDataModel)
 export class ProjectResolver {

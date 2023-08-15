@@ -4,6 +4,8 @@ export const TYPES = {
   issueRepository: 'issueRepository',
   issueService: 'issueService',
   applicationLogger: 'applicationLogger',
+  commentRepository: 'commentRepository',
+  commentService: 'commentService',
 };
 
 export enum IssueStatus {
@@ -23,6 +25,7 @@ export enum IssuePriority {
 export const APIResponseMessage = {
   serverError: 'Critical server error occured, please try again later',
   projectNotFound: 'Project does not exist',
+  issueNotFound: 'Issue does not exist',
 };
 
 export const DbLiterals = {

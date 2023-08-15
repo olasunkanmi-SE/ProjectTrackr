@@ -28,6 +28,18 @@ export class IssueRepository
       .createQueryBuilder(issues)
       .leftJoinAndSelect(projectIssues, project)
       .getMany();
-    return query.map((issue) => this.issueMapper.toDomain(issue));
+    return query.length
+      ? query.map((issue) => this.issueMapper.toDomain(issue))
+      : [];
+  }
+
+  async getIssueById(id: string): Promise<Issue> {
+    const { project, projectIssues, issues } = DbLiterals;
+    const query = await this.repository
+      .createQueryBuilder(issues)
+      .leftJoinAndSelect(projectIssues, project)
+      .where({ _id: id })
+      .getOne();
+    return this.issueMapper.toDomain(query);
   }
 }

@@ -78,9 +78,10 @@ export class IssueMapper implements IMapper<Issue, IssueDataModel> {
         reporter,
         projectId,
         project: this.projectMapper.toDomain(project),
-        comments: comments.length
-          ? comments.map((comment) => this.commentMapper.toDomain(comment))
-          : [],
+        comments:
+          comments && comments.length
+            ? comments.map((comment) => this.commentMapper.toDomain(comment))
+            : [],
         audit: this.auditMapper.toDomain(model),
       },
       _id,
